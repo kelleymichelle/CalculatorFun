@@ -1,0 +1,15 @@
+h1 {
+    position: center;
+}
+
+#container {
+    display: flex;
+}
+
+.button {
+
+}
+
+#row {
+    display: flex;
+}

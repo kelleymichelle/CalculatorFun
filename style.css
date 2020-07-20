@@ -36,6 +36,18 @@ h1 {
     font-size: 3em;
 }
 
-.display-content {
-    /* justify-content: flex-end; */
+/* .display-content {
+    
+} */
+
+#divide-button, #multiplication-button, #minus-button, #plus-button {
+    background-color: lightcoral;
+}
+
+#equal-button {
+    background-color: rgb(73, 216, 73);
+}
+
+#clear-button {
+    background-color: mediumslateblue;
 }

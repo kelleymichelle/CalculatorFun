@@ -1,19 +1,20 @@
 h1 {
-    position: center;
+    /* position: center; */
 }
 
 #container {
     display: flex;
     flex-direction: column;
+    /* width: 440px; */
 }
 
 .button {
     background-color: #ffc600;
-    height: 20px;
-    width: 20px;
-    margin: .24em;
-    padding: 1em;
-    font-size: 3em;
+    height: 17px;
+    width: 17px;
+    margin: 6px;
+    padding: 30px;
+    font-size: 30px;
 }
 
 #row {
@@ -21,19 +22,18 @@ h1 {
 }
 
 #equal-button {
-
-    width: 160px;
+    width: 195px;
 }
 
 #display-window {
     display: flex;
     justify-content: flex-end;
     background-color: lightblue;
-    height: 20px;
-    width: 435px;
-    margin: .24em;
-    padding: 1em;
-    font-size: 3em;
+    height: 36px;
+    width: 284px;
+    margin: 6px;
+    padding: 30px;
+    font-size: 40px;
 }
 
 /* .display-content {

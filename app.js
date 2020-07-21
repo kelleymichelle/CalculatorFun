@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-        
+    clear()
 })
 
 
@@ -46,6 +46,7 @@ function storeTheDisplayedNumberAndOperator(buttonPressed) {
     if(buttonPressed === "+" || buttonPressed === "-" || buttonPressed === "/" || buttonPressed === "x") {
         operator = buttonPressed
         storedNumber = parseInt(currentNumber)
+        // total = parseInt(currentNumber)
         isOperator = true
         console.log(storedNumber, operator, total)
     }
@@ -61,21 +62,33 @@ function clear() {
 }
 
 function equals() {
-
+    // storedNumber = parseInt(currentNumber)
+    console.log(storedNumber, total, currentNumber)
     if(operator === "+") {
-        let sum = total + storedNumber
+        let sum = total + parseInt(currentNumber)
         numberWindow.innerText = sum
+        storedNumber = sum
+        total = sum
     } else if (operator === "-") {
-        let difference = total - storedNumber
+        let difference = total - parseInt(currentNumber)
         numberWindow.innerText = difference
+        storedNumber = difference
+        total = difference
     } else if (operator === "/") {
-        let result = total / storedNumber
+        let result = total / parseInt(currentNumber)
+        console.log(result)
         numberWindow.innerText = result
+        storedNumber = result
+        total = result
     } else if (operator === "x") {
-        let product = total * storedNumber
+        let product = total * parseInt(currentNumber)
         numberWindow.innerText = product
+        storedNumber = product
+        total = product
     } 
-
+    currentNumber = total
+    // isOperator = false
+    console.log(storedNumber, total, currentNumber)
 }
 
 

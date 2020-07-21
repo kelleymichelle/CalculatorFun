@@ -23,6 +23,8 @@ buttons.forEach(button => {
             equals()
         } else if (buttonPressed === "CE") {
             clear()
+        } else if (buttonPressed === "+/-") {
+            negOrPosToggle()
         } else {
             if(isOperator === false) {
                 displayNumber(buttonPressed)
@@ -39,9 +41,7 @@ buttons.forEach(button => {
 
 function displayNumber(buttonPressed) {
     currentNumber += buttonPressed
-
     numberWindow.innerText = currentNumber
-
 }
 
 function storeTheDisplayedNumberAndOperator(buttonPressed) {
@@ -68,7 +68,7 @@ function clear() {
 function equals() {
     // storedNumber = parseInt(currentNumber)
     let currentInt = parseInt(currentNumber)
-    
+
     if (firstShow) {
         numberWindow.innerText = currentInt
         storedNumber = currentInt
@@ -112,6 +112,13 @@ function equals() {
     // isOperator = false
     console.log(storedNumber, total, currentNumber)
     }
+}
+
+function negOrPosToggle() {
+    let num = currentNumber
+    currentNumber = parseInt(num) * (-1)
+    console.log(currentNumber)
+    numberWindow.innerText = currentNumber
 }
 
 

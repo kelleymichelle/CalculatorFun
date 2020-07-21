@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 let buttons = document.querySelectorAll(".button")
+let numberWindow = document.getElementById("display-content")
 let total = 0 
 let storedNumber = 0
 let operator = ""
@@ -26,6 +27,8 @@ buttons.forEach(button => {
             } else {
                 currentNumber = ""
                 isOperator = false
+                total = storedNumber
+                storedNumber = 0
                 displayNumber(buttonPressed)
             }
         }        
@@ -34,9 +37,7 @@ buttons.forEach(button => {
 
 function displayNumber(buttonPressed) {
     currentNumber += buttonPressed
-    console.log(currentNumber)
 
-    let numberWindow = document.getElementById("display-content")
     numberWindow.innerText = currentNumber
 
 }
@@ -46,33 +47,39 @@ function storeTheDisplayedNumberAndOperator(buttonPressed) {
         operator = buttonPressed
         storedNumber = parseInt(currentNumber)
         isOperator = true
-        console.log(storedNumber, operator)
+        console.log(storedNumber, operator, total)
     }
 }
 
 function clear() {
-
+    total = 0 
+    storedNumber = 0
+    operator = ""
+    currentNumber = ""
+    isOperator = false
+    numberWindow.innerText = "0"
 }
 
 function equals() {
 
+    if(operator === "+") {
+        let sum = total + storedNumber
+        numberWindow.innerText = sum
+    } else if (operator === "-") {
+        let difference = total - storedNumber
+        numberWindow.innerText = difference
+    } else if (operator === "/") {
+        let result = total / storedNumber
+        numberWindow.innerText = result
+    } else if (operator === "x") {
+        let product = total * storedNumber
+        numberWindow.innerText = product
+    } 
+
 }
 
-// function operatorPressed(operator, storedNumber) {
-//     if(operator === "+") {
-//         //sumthin with the total
-//     } else if (operator === "-") {
-//         //sumthin with the total
-//     } else if (operator === "/") {
-//         // sonmething with the total
-//     } else if (operator === "x") {
-//         // somethin with the total
-//     } else if (operator === "=") {
-//         // sometin with the total
-//     } else if (operator === "CE") {
-//         // clear out the total
-//     }
-// }
+
+
 
 
 

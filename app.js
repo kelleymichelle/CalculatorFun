@@ -9,9 +9,12 @@ let total = 0
 //when currentNumber gets an operator
 let storedNumber = 0
 let operator = ""
+let prevOperator = ""
 let currentNumber = ""
 let isOperator = false
+//to skip over evaluating numbers to 0 first time around
 let firstShow = true
+let totaling = false
 
 buttons.forEach(button => {
     return button.addEventListener("click", (e) => {
@@ -20,6 +23,7 @@ buttons.forEach(button => {
         if(buttonPressed === "+" || buttonPressed === "-" || buttonPressed === "/" || buttonPressed === "x") {
             storeTheDisplayedNumberAndOperator(buttonPressed)
         } else if (buttonPressed === "=") {
+            totaling = true
             equals()
         } else if (buttonPressed === "CE") {
             clear()
@@ -46,6 +50,7 @@ function displayNumber(buttonPressed) {
 
 function storeTheDisplayedNumberAndOperator(buttonPressed) {
     if(buttonPressed === "+" || buttonPressed === "-" || buttonPressed === "/" || buttonPressed === "x") {
+        prevOperator = operator
         operator = buttonPressed
         storedNumber = parseInt(currentNumber)
         // total = parseInt(currentNumber)
@@ -63,11 +68,18 @@ function clear() {
     isOperator = false
     numberWindow.innerText = "0"
     firstShow = true
+    prevOperator = ""
+    totaling = false
 }
 
 function equals() {
     // storedNumber = parseInt(currentNumber)
     let currentInt = parseInt(currentNumber)
+
+    if (totaling) {
+        prevOperator = operator
+        totaling = false
+    }
 
     if (firstShow) {
         numberWindow.innerText = currentInt
@@ -77,19 +89,19 @@ function equals() {
     } else {
 
         console.log(storedNumber, total, currentNumber)
-        if(operator === "+") {
+        if(prevOperator === "+") {
             let sum = total + parseInt(currentNumber)
             numberWindow.innerText = sum
             storedNumber = sum
             total = sum
-        } else if (operator === "-") {
+        } else if (prevOperator === "-") {
             
             let difference = total - parseInt(currentNumber)
             // console.log(difference)
             numberWindow.innerText = difference
             storedNumber = difference
             total = difference
-        } else if (operator === "/") {
+        } else if (prevOperator === "/") {
             if (total === 0) {
                 numberWindow.innerText = currentInt
                 storedNumber = currentInt
@@ -102,7 +114,7 @@ function equals() {
                 storedNumber = result
                 total = result
             }
-        } else if (operator === "x") {
+        } else if (prevOperator === "x") {
             let product = total * parseInt(currentNumber)
             numberWindow.innerText = product
             storedNumber = product
